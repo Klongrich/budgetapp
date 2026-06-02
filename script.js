@@ -14,3 +14,10 @@ form.addEventListener('submit', function(event) {
   total += Number(priceInput.value);
   document.getElementById('display-amount').textContent = total;
 });
+
+const resetButton = document.getElementById('reset');
+
+resetButton.addEventListener('click', function() {
+	total = 0;
+	document.getElementById('display-amount').textContent = total;
+});
