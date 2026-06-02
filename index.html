@@ -11,11 +11,28 @@
 		<div class="main">
 			<h2> I am broke budgeting app </h2>
 			<form id="form" action="index.html" method=POST>
+				<label> Location: </label>
+				<input type="text" id="location">
+				<br /> <br />
+				
 				<label> Amount:  </label>
 				<input type="text" id="price">
-				<p>Spent today: <span id="display-amount"> </p>
+				<br /> <br />
+				
+				<label> Iteam:  </label>
+				<input type="text" id="iteam">
+				<br /> <br />
+				
+				<p>Spent today: $<span id="display-amount"> </p>
 				<input type="submit" value="add">
 			</form>
+			
+			<div style="visibility: hidden;">
+				<p> Iteam: <span id="iteam-1"> </p>
+				<p> amount: <span id="amount-1"></p>
+				<p> location: <span id="location-1"></p>
+			</div>
+			
 			<br />
 			<button id="reset"> reset </button>
 			<p>Today's date is: <span id="current-date"></span></p>
