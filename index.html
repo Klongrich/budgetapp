@@ -10,11 +10,12 @@
 	<body>
 		<div class="main">
 			<h2> I am broke budgeting app </h2>
-			<label> Amount:  </label>
-			<input type="text" id="price">
-			<p>Spent today: </p>
-			
-			<input type="submit">
+			<form id="form" action="index.html" method=POST>
+				<label> Amount:  </label>
+				<input type="text" id="price">
+				<p>Spent today: <span id="display-amount"> </p>
+				<input type="submit">
+			</form>
 			<p>Today's date is: <span id="current-date"></span></p>
 			
 		</div>
