@@ -1,3 +1,22 @@
 .main {
 	text-align: center;
 }
+
+.iteam-container {
+    display: flex;
+     flex-direction: column;  /* Stacks items vertically */
+     align-items: center;     /* Centers items horizontally in the column */
+     gap: 15px;
+}
+
+.iteam {
+	text-align: left;
+	background-color: grey;
+	border-radius: 15px;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: white;
+	margin-top: 15px;
+	width: 70%;
+}
