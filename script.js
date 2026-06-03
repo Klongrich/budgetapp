@@ -11,6 +11,7 @@ const loc = document.getElementById('location');
 const iteam = document.getElementById('iteam');
 
 let total = 0;
+let numberOfIeams = 0;
 
 form.addEventListener('submit', function(event) {
   event.preventDefault();
@@ -39,6 +40,18 @@ function initializeApp() {
 	let amount_spent = localStorage.getItem('Amount-Spent');
 	total = Number(amount_spent);
 	document.getElementById('display-amount').textContent = amount_spent;
+	
+	let val = localStorage.getItem('testing');
+	if (val == null)
+	{
+		console.log("value is not set");
+	}
+	else
+	{
+		console.log("value is set");
+	}
+	
+	console.log(localStorage.getItem('testing'))
 	console.log("The webpage has fully loaded!");
 }
 
