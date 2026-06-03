@@ -21,6 +21,10 @@ function updateEntryValue() {
 	    document.getElementById('iteam-1').textContent = iteam.value;
 	    document.getElementById('amount-1').textContent = amount.value;
 		
+		localStorage.setItem('location-1', loc.value);
+		localStorage.setItem('iteam-1', iteam.value);
+		localStorage.setItem('amount-1', amount.value);
+		
 		numberOfIteams = 1;
 		localStorage.setItem('number-of-iteams', 1);
 	}
@@ -29,6 +33,10 @@ function updateEntryValue() {
 	    document.getElementById('location-2').textContent = loc.value;
 	    document.getElementById('iteam-2').textContent = iteam.value;
 	    document.getElementById('amount-2').textContent = amount.value;
+		
+		localStorage.setItem('location-2', loc.value);
+		localStorage.setItem('iteam-2', iteam.value);
+		localStorage.setItem('amount-2', amount.value);
 		
 		numberOfIteams = 2;
 		localStorage.setItem('number-of-iteams', 2);
@@ -67,15 +75,17 @@ resetButton.addEventListener('click', function() {
 	document.getElementById('display-amount').textContent = total;
 });
 
+
+
 function initializeApp() {
 	let amount_spent = localStorage.getItem('Amount-Spent');
 	total = Number(amount_spent);
 	numberOfIteams = localStorage.getItem('number-of-iteams');
 	document.getElementById('display-amount').textContent = amount_spent;
 	
-	if (numberOfIteams == null)
+	if (numberOfIteams == null || numberOfIteams == 0)
 	{
-		console.log("value is not set");
+		console.log("value is not set or is 0");
 		localStorage.setItem('number-of-iteams', 0);
 	}
 	else
@@ -83,6 +93,15 @@ function initializeApp() {
 		numberOfIteams = localStorage.getItem('number-of-iteams');
 		console.log("value is set: " + numberOfIteams);
 		
+		for (let i = 0; i < numberOfIteams; i++) {
+			let val = i + 1;
+			
+		    document.getElementById('location-' + val).textContent = localStorage.getItem('location-' + val);
+		   	document.getElementById('iteam-' + val).textContent = localStorage.getItem('iteam-' + val);
+		   	document.getElementById('amount-' + val).textContent = localStorage.getItem('amount-' + val);
+			
+			console.log(val);
+		}
 	}
 	
 	console.log(localStorage.getItem('testing'))
