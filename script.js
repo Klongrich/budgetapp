@@ -26,6 +26,12 @@ function updateEntryValue() {
 	}
 	else if (numberOfIteams == 1)
 	{
+	    document.getElementById('location-2').textContent = loc.value;
+	    document.getElementById('iteam-2').textContent = iteam.value;
+	    document.getElementById('amount-2').textContent = amount.value;
+		
+		numberOfIteams = 2;
+		localStorage.setItem('number-of-iteams', 2);
 		console.log("number of iteams is 1");
 	}
 	else if (numberOfIteams == 2)
