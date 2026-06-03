@@ -45,12 +45,7 @@ form.addEventListener('submit', function(event) {
   
   updateEntryValue();
   document.getElementById('display-amount').textContent = total;
-
-	/*
-  document.getElementById('location-1').textContent = loc.value;
-  document.getElementById('iteam-1').textContent = iteam.value;
-  document.getElementById('amount-1').textContent = amount.value;
-  	*/
+  
   localStorage.setItem('Amount-Spent', total);
 });
 
@@ -60,7 +55,9 @@ resetButton.addEventListener('click', function() {
 	total = 0;
 	
 	localStorage.setItem('Amount-Spent', 0);
+	localStorage.setItem('number-of-iteams', 0);
 	
+	numberOfIteams = 0;
 	document.getElementById('display-amount').textContent = total;
 });
 
