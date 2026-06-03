@@ -13,16 +13,44 @@ const iteam = document.getElementById('iteam');
 let total = 0;
 let numberOfIeams = 0;
 
+function updateEntryValue() {
+	console.log('number of iteams: ' +  numberOfIteams);
+	if (numberOfIteams == 0)
+	{
+	    document.getElementById('location-1').textContent = loc.value;
+	    document.getElementById('iteam-1').textContent = iteam.value;
+	    document.getElementById('amount-1').textContent = amount.value;
+		
+		numberOfIteams = 1;
+		localStorage.setItem('number-of-iteams', 1);
+	}
+	else if (numberOfIteams == 1)
+	{
+		console.log("number of iteams is 1");
+	}
+	else if (numberOfIteams == 2)
+	{
+		
+	}
+	else if (numberOfIteams == 3)
+	{
+		
+	}
+}
+
 form.addEventListener('submit', function(event) {
   event.preventDefault();
   
   total += Number(priceInput.value);
+  
+  updateEntryValue();
   document.getElementById('display-amount').textContent = total;
 
+	/*
   document.getElementById('location-1').textContent = loc.value;
   document.getElementById('iteam-1').textContent = iteam.value;
   document.getElementById('amount-1').textContent = amount.value;
-  
+  	*/
   localStorage.setItem('Amount-Spent', total);
 });
 
@@ -49,6 +77,7 @@ function initializeApp() {
 	}
 	else
 	{
+		numberOfIteams = localStorage.getItem('number-of-iteams');
 		console.log("value is set: " + numberOfIteams);
 		
 	}
