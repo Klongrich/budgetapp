@@ -13,42 +13,37 @@ const iteam = document.getElementById('iteam');
 let total = 0;
 let numberOfIeams = 0;
 
+function updateEntry(val)
+{
+    document.getElementById('location-' + val).textContent = loc.value;
+    document.getElementById('iteam-' + val).textContent = iteam.value;
+    document.getElementById('amount-' + val).textContent = amount.value;
+	
+	localStorage.setItem('location-' + val, loc.value);
+	localStorage.setItem('iteam-' + val, iteam.value);
+	localStorage.setItem('amount-' + val, amount.value);
+	
+	numberOfIteams = val;
+	localStorage.setItem('number-of-iteams', val);
+}
+
 function updateEntryValue() {
 	console.log('number of iteams: ' +  numberOfIteams);
 	if (numberOfIteams == 0)
 	{
-	    document.getElementById('location-1').textContent = loc.value;
-	    document.getElementById('iteam-1').textContent = iteam.value;
-	    document.getElementById('amount-1').textContent = amount.value;
-		
-		localStorage.setItem('location-1', loc.value);
-		localStorage.setItem('iteam-1', iteam.value);
-		localStorage.setItem('amount-1', amount.value);
-		
-		numberOfIteams = 1;
-		localStorage.setItem('number-of-iteams', 1);
+		updateEntry(1);
 	}
 	else if (numberOfIteams == 1)
 	{
-	    document.getElementById('location-2').textContent = loc.value;
-	    document.getElementById('iteam-2').textContent = iteam.value;
-	    document.getElementById('amount-2').textContent = amount.value;
-		
-		localStorage.setItem('location-2', loc.value);
-		localStorage.setItem('iteam-2', iteam.value);
-		localStorage.setItem('amount-2', amount.value);
-		
-		numberOfIteams = 2;
-		localStorage.setItem('number-of-iteams', 2);
-		console.log("number of iteams is 1");
+	    updateEntry(2);
 	}
 	else if (numberOfIteams == 2)
 	{
-		
+		updateEntry(3);
 	}
 	else if (numberOfIteams == 3)
 	{
-		
+		updateEntry(4);
 	}
 }
 
@@ -103,7 +98,6 @@ function initializeApp() {
 			console.log(val);
 		}
 	}
-	
 	console.log(localStorage.getItem('testing'))
 	console.log("The webpage has fully loaded!");
 }
