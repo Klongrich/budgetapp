@@ -39,16 +39,18 @@ resetButton.addEventListener('click', function() {
 function initializeApp() {
 	let amount_spent = localStorage.getItem('Amount-Spent');
 	total = Number(amount_spent);
+	numberOfIteams = localStorage.getItem('number-of-iteams');
 	document.getElementById('display-amount').textContent = amount_spent;
 	
-	let val = localStorage.getItem('testing');
-	if (val == null)
+	if (numberOfIteams == null)
 	{
 		console.log("value is not set");
+		localStorage.setItem('number-of-iteams', 0);
 	}
 	else
 	{
-		console.log("value is set");
+		console.log("value is set: " + numberOfIteams);
+		
 	}
 	
 	console.log(localStorage.getItem('testing'))
