@@ -35,13 +35,8 @@ function updateEntry(val)
 
 form.addEventListener('submit', function(event) {
   	event.preventDefault();
-  
 	const parsed_number = Number.parseFloat(amount.value);
   	let is_number = Number.isFinite(parsed_number);
-
-	console.log(iteam.value);
-	console.log(amount.value);
-	console.log(loc.value);
 
 	if (iteam.value == "")
 	{
