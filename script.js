@@ -10,6 +10,7 @@ const amount = document.getElementById('price');
 const loc = document.getElementById('location');
 const iteam = document.getElementById('iteam');
 
+
 let total = 0;
 let drink_total = 0;
 let numberOfIeams = 0;
@@ -64,12 +65,14 @@ drinksButton.addEventListener('click', function() {
 	if (container.style.display == 'none')
 	{
 		container.style.display = 'flex';
+		document.getElementById('drinks_button_text').textContent = 'Show Drinks';
 		document.getElementById('display-amount').textContent = total;
 	}
 	else
 	{
 		drink_total = 0;
 		container.style.display = 'none';
+		document.getElementById('drinks_button_text').textContent = 'Show All';
 		for (let i = 0; i < numberOfIteams; i++) {
 			let val = i + 1;
 			
@@ -99,6 +102,7 @@ function initializeApp() {
 	total = Number(amount_spent);
 	numberOfIteams = localStorage.getItem('number-of-iteams');
 	document.getElementById('display-amount').textContent = amount_spent;
+	document.getElementById('drinks_button_text').textContent = 'Show Drinks';
 	
 	if (numberOfIteams == null || numberOfIteams == 0)
 	{
