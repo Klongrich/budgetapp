@@ -11,13 +11,18 @@ const loc = document.getElementById('location');
 const iteam = document.getElementById('iteam');
 
 let total = 0;
+let drink_total = 0;
 let numberOfIeams = 0;
 
 function updateEntry(val)
-{
-    document.getElementById('location-' + val).textContent = loc.value;
-    document.getElementById('iteam-' + val).textContent = iteam.value;
-    document.getElementById('amount-' + val).textContent = amount.value;
+{	
+	container.insertAdjacentHTML('afterbegin', `
+      <div class="iteam">
+        <p><b>Iteam: ${iteam.value}</b> <span id="iteam-${val}"></span></p>
+        <p><b>Amount: ${amount.value}</b> <span id="amount-${val}"></span></p>
+        <p><b>Location: ${loc.value}</b> <span id="location-${val}"></span></p>
+      </div>
+    `);
 	
 	localStorage.setItem('location-' + val, loc.value);
 	localStorage.setItem('iteam-' + val, iteam.value);
@@ -27,39 +32,21 @@ function updateEntry(val)
 	localStorage.setItem('number-of-iteams', val);
 }
 
-function updateEntryValue() {
-	console.log('number of iteams: ' +  numberOfIteams);
-	if (numberOfIteams == 0)
-	{
-		updateEntry(1);
-	}
-	else if (numberOfIteams == 1)
-	{
-	    updateEntry(2);
-	}
-	else if (numberOfIteams == 2)
-	{
-		updateEntry(3);
-	}
-	else if (numberOfIteams == 3)
-	{
-		updateEntry(4);
-	}
-}
-
 form.addEventListener('submit', function(event) {
   event.preventDefault();
   
   total += Number(priceInput.value);
   
-  updateEntryValue();
+  updateEntry(Number(numberOfIteams) + 1);
   document.getElementById('display-amount').textContent = total;
   
   localStorage.setItem('Amount-Spent', total);
 });
 
 const resetButton = document.getElementById('reset');
-
+const container = document.getElementById('testing');
+const drinksContainer = document.getElementById('drinks');
+   
 resetButton.addEventListener('click', function() {
 	total = 0;
 	
@@ -70,7 +57,42 @@ resetButton.addEventListener('click', function() {
 	document.getElementById('display-amount').textContent = total;
 });
 
+const drinksButton = document.getElementById('show_drinks');
 
+drinksButton.addEventListener('click', function() {
+    drinksContainer.innerHTML = ''; // Wipes old entries before rebuilding the loop
+	if (container.style.display == 'none')
+	{
+		container.style.display = 'flex';
+		document.getElementById('display-amount').textContent = total;
+	}
+	else
+	{
+		drink_total = 0;
+		container.style.display = 'none';
+		for (let i = 0; i < numberOfIteams; i++) {
+			let val = i + 1;
+			
+			let item = localStorage.getItem('iteam-' + val);
+			let amount = localStorage.getItem('amount-' + val);
+			let loc = localStorage.getItem('location-' + val);
+			
+			if (item == "Drink") 
+			{
+				drink_total += Number(amount);
+				drinksContainer.insertAdjacentHTML('afterbegin', `
+				<div class="iteam">
+			 		<p><b>Iteam: ${item}</b> <span id="iteam-${val}"></span></p>
+			 		<p><b>Amount: $${amount}</b> <span id="amount-${val}"></span></p>
+			 		<p><b>Location: ${loc}</b> <span id="location-${val}"></span></p>
+			 	</div>
+				`);
+			}
+			console.log(val);
+		}
+		document.getElementById('display-amount').textContent = drink_total;
+ 	}
+})
 
 function initializeApp() {
 	let amount_spent = localStorage.getItem('Amount-Spent');
@@ -91,9 +113,17 @@ function initializeApp() {
 		for (let i = 0; i < numberOfIteams; i++) {
 			let val = i + 1;
 			
-		    document.getElementById('location-' + val).textContent = localStorage.getItem('location-' + val);
-		   	document.getElementById('iteam-' + val).textContent = localStorage.getItem('iteam-' + val);
-		   	document.getElementById('amount-' + val).textContent = localStorage.getItem('amount-' + val);
+			let item = localStorage.getItem('iteam-' + val);
+			let amount = localStorage.getItem('amount-' + val);
+			let loc = localStorage.getItem('location-' + val);
+			
+			container.insertAdjacentHTML('afterbegin', `
+		      <div class="iteam">
+		        <p><b>Iteam: ${item}</b> <span id="iteam-${val}"></span></p>
+		        <p><b>Amount: $${amount}</b> <span id="amount-${val}"></span></p>
+		        <p><b>Location: ${loc}</b> <span id="location-${val}"></span></p>
+		      </div>
+		    `);
 			
 			console.log(val);
 		}
