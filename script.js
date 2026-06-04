@@ -17,15 +17,6 @@ let numberOfIeams = 0;
 
 function updateEntry(val)
 {	
-    const parsed_number = Number.parseFloat(amount.value);
-    let is_number = Number.isFinite(parsed_number);
-	
-	if (is_number == false)
-	{
-		alert("Enter valid number for amount");
-	}
-	else
-	{
 		container.insertAdjacentHTML('afterbegin', `
       	<div class="iteam">
         	<p><b>Iteam: ${iteam.value}</b> <span id="iteam-${val}"></span></p>
@@ -40,18 +31,38 @@ function updateEntry(val)
 	
 		numberOfIteams = val;
 		localStorage.setItem('number-of-iteams', val);
-	}
 }
 
 form.addEventListener('submit', function(event) {
-  event.preventDefault();
+  	event.preventDefault();
   
-  total += Number(priceInput.value);
+	const parsed_number = Number.parseFloat(amount.value);
+  	let is_number = Number.isFinite(parsed_number);
+
+	console.log(iteam.value);
+	console.log(amount.value);
+	console.log(loc.value);
+
+	if (iteam.value == "")
+	{
+		alert("no iteam value");
+	}
+	else if (loc.value == "")
+	{
+		alert("no location value");
+	}
+	else if (is_number == false)
+	{
+		alert("Enter valid number for amount");
+	}
+	else {
+  	  total += Number(priceInput.value);
   
-  updateEntry(Number(numberOfIteams) + 1);
-  document.getElementById('display-amount').textContent = total;
+	  updateEntry(Number(numberOfIteams) + 1);
+	  document.getElementById('display-amount').textContent = total;
   
-  localStorage.setItem('Amount-Spent', total);
+	  localStorage.setItem('Amount-Spent', total);
+  	}
 });
 
 const resetButton = document.getElementById('reset');
