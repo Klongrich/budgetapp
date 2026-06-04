@@ -17,20 +17,30 @@ let numberOfIeams = 0;
 
 function updateEntry(val)
 {	
-	container.insertAdjacentHTML('afterbegin', `
-      <div class="iteam">
-        <p><b>Iteam: ${iteam.value}</b> <span id="iteam-${val}"></span></p>
-        <p><b>Amount: ${amount.value}</b> <span id="amount-${val}"></span></p>
-        <p><b>Location: ${loc.value}</b> <span id="location-${val}"></span></p>
-      </div>
-    `);
+    const parsed_number = Number.parseFloat(amount.value);
+    let is_number = Number.isFinite(parsed_number);
 	
-	localStorage.setItem('location-' + val, loc.value);
-	localStorage.setItem('iteam-' + val, iteam.value);
-	localStorage.setItem('amount-' + val, amount.value);
+	if (is_number == false)
+	{
+		alert("Enter valid number for amount");
+	}
+	else
+	{
+		container.insertAdjacentHTML('afterbegin', `
+      	<div class="iteam">
+        	<p><b>Iteam: ${iteam.value}</b> <span id="iteam-${val}"></span></p>
+        	<p><b>Amount: ${amount.value}</b> <span id="amount-${val}"></span></p>
+        	<p><b>Location: ${loc.value}</b> <span id="location-${val}"></span></p>
+      	</div>
+    	`);
 	
-	numberOfIteams = val;
-	localStorage.setItem('number-of-iteams', val);
+		localStorage.setItem('location-' + val, loc.value);
+		localStorage.setItem('iteam-' + val, iteam.value);
+		localStorage.setItem('amount-' + val, amount.value);
+	
+		numberOfIteams = val;
+		localStorage.setItem('number-of-iteams', val);
+	}
 }
 
 form.addEventListener('submit', function(event) {
