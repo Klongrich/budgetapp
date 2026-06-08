@@ -116,16 +116,16 @@ drinksButton.addEventListener('click', function() {
 const breakfeastButton = document.getElementById('menu');
 const goBackButton = document.getElementById('go_back');
 const main_div = document.getElementById('main_div');
-const menu = document.getElementById('breakfast_menu')
+const breakfast_menu = document.getElementById('breakfast_menu')
 
 breakfeastButton.addEventListener('click', function() {
 	main_div.style.display = 'none';
-	menu.style.display = 'block';
+	breakfast_menu.style.display = 'block';
 })
 
 goBackButton.addEventListener('click', function() {
 	main_div.style.display = 'block';
-	menu.style.display = 'none';
+	breakfast_menu.style.display = 'none';
 })
 
 function initializeApp() {
@@ -134,7 +134,7 @@ function initializeApp() {
 	numberOfIteams = localStorage.getItem('number-of-iteams');
 	document.getElementById('display-amount').textContent = amount_spent;
 	document.getElementById('drinks_button_text').textContent = 'Show Drinks';
-	menu.style.display = 'none';
+	breakfast_menu.style.display = 'none';
 	
 	
 	if (numberOfIteams == null || numberOfIteams == 0)
