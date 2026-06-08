@@ -117,6 +117,7 @@ const breakfeastButton = document.getElementById('menu');
 const goBackButton = document.getElementById('go_back');
 const main_div = document.getElementById('main_div');
 const breakfast_menu = document.getElementById('breakfast_menu')
+const lunch_menu = document.getElementById('lunch_menu');
 
 breakfeastButton.addEventListener('click', function() {
 	main_div.style.display = 'none';
@@ -135,6 +136,7 @@ function initializeApp() {
 	document.getElementById('display-amount').textContent = amount_spent;
 	document.getElementById('drinks_button_text').textContent = 'Show Drinks';
 	breakfast_menu.style.display = 'none';
+	lunch_menu.style.display = 'none';
 	
 	
 	if (numberOfIteams == null || numberOfIteams == 0)
