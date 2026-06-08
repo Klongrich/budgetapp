@@ -113,13 +113,14 @@ drinksButton.addEventListener('click', function() {
  	}
 })
 
-const breakfeastButton = document.getElementById('menu');
+const menuButton = document.getElementById('menu');
 const goBackButton = document.getElementById('go_back');
 const main_div = document.getElementById('main_div');
 const breakfast_menu = document.getElementById('breakfast_menu')
 const lunch_menu = document.getElementById('lunch_menu');
 
-breakfeastButton.addEventListener('click', function() {
+menuButton.addEventListener('click', function() {
+	
 	main_div.style.display = 'none';
 	breakfast_menu.style.display = 'block';
 })
