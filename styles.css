@@ -7,6 +7,12 @@ body {
 	text-align: center;
 }
 
+#go_back {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .iteam-container {
     display: flex;
      flex-direction: column;  /* Stacks items vertically */
