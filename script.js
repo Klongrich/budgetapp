@@ -120,14 +120,30 @@ const breakfast_menu = document.getElementById('breakfast_menu')
 const lunch_menu = document.getElementById('lunch_menu');
 
 menuButton.addEventListener('click', function() {
-	
+	const now = new Date();
+	const currentHour = now.getHours();
+
+	if (currentHour >= 7 && currentHour < 10)
+	{
+	    console.log("The current time is between 7:00 AM and 10:00 AM.");
+		breakfast_menu.style.display = 'block';
+	} 
+	else if (currentHour >= 10 && currentHour < 15)
+	{
+	    console.log("The current time is 10:00 AM to 3:00 PM");
+		lunch_menu.style.display = 'block';
+	}
+	goBackButton.style.display = 'block';
 	main_div.style.display = 'none';
-	breakfast_menu.style.display = 'block';
+
 })
 
 goBackButton.addEventListener('click', function() {
 	main_div.style.display = 'block';
+	
 	breakfast_menu.style.display = 'none';
+	lunch_menu.style.display = 'none';
+	goBackButton.style.display = 'none';
 })
 
 function initializeApp() {
@@ -138,6 +154,7 @@ function initializeApp() {
 	document.getElementById('drinks_button_text').textContent = 'Show Drinks';
 	breakfast_menu.style.display = 'none';
 	lunch_menu.style.display = 'none';
+	goBackButton.style.display = 'none';
 	
 	
 	if (numberOfIteams == null || numberOfIteams == 0)
