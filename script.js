@@ -82,7 +82,7 @@ drinksButton.addEventListener('click', function() {
 	{
 		container.style.display = 'flex';
 		document.getElementById('drinks_button_text').textContent = 'Show Drinks';
-		document.getElementById('display-amount').textContent = total;
+		document.getElementById('display-amount').textContent = total.toFixed(2);
 	}
 	else
 	{
@@ -109,7 +109,7 @@ drinksButton.addEventListener('click', function() {
 			}
 			console.log(val);
 		}
-		document.getElementById('display-amount').textContent = drink_total;
+		document.getElementById('display-amount').textContent = drink_total.toFixed(2);
  	}
 })
 
@@ -195,6 +195,11 @@ window.addEventListener('DOMContentLoaded', initializeApp);
 
 
 const exportData = document.getElementById('export_data');
+
+function sendDataToEndpoint() {
+	
+	
+}
 
 exportData.addEventListener('click', function() {
 	fetch('http://localhost:3022/api/data?ID=15&loc=Home&amount=2.57&item=lunch')
