@@ -191,3 +191,25 @@ function initializeApp() {
 
 // 2. Trigger it automatically when the HTML structure is complete
 window.addEventListener('DOMContentLoaded', initializeApp);
+
+
+
+const exportData = document.getElementById('export_data');
+
+exportData.addEventListener('click', function() {
+	fetch('http://localhost:3022/api/data?ID=15&loc=Home&amount=2.57&item=lunch')
+	  .then(response => {
+	    if (!response.ok) {
+	      throw new Error(`HTTP error! Status: ${response.status}`);
+	    }
+	    return response.json();
+	  })
+	  .then(data => console.log(data))
+	  .catch(error => console.error('Fetch failed:', error));
+	console.log("clicked button");
+})
+
+
+
+
+
