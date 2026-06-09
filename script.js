@@ -54,7 +54,7 @@ form.addEventListener('submit', function(event) {
   	  total += Number(priceInput.value);
   
 	  updateEntry(Number(numberOfIteams) + 1);
-	  document.getElementById('display-amount').textContent = total;
+	  document.getElementById('display-amount').textContent = total.toFixed(2);
   
 	  localStorage.setItem('Amount-Spent', total);
   	}
@@ -150,7 +150,7 @@ function initializeApp() {
 	let amount_spent = localStorage.getItem('Amount-Spent');
 	total = Number(amount_spent);
 	numberOfIteams = localStorage.getItem('number-of-iteams');
-	document.getElementById('display-amount').textContent = amount_spent;
+	document.getElementById('display-amount').textContent = total.toFixed(2); ;
 	document.getElementById('drinks_button_text').textContent = 'Show Drinks';
 	breakfast_menu.style.display = 'none';
 	lunch_menu.style.display = 'none';
